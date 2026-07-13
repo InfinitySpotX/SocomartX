@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success | SOCOMART</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #1e3a8a; /* ജിപേ സ്റ്റൈൽ ഡാർക്ക് ബ്ലൂ/ഗ്രീൻ മിക്സ് ബാക്ക്ഗ്രൗണ്ട് */
+            background: linear-gradient(135deg, #0f172a 0%, #064e3b 100%);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .success-container {
+            text-align: center;
+            animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        /* 🟢 ജിപേ മോഡൽ വട്ടത്തിലുള്ള ✔️ ആനിമേഷൻ */
+        .circle-checkmark {
+            width: 100px;
+            height: 100px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: white;
+            margin: 0 auto 25px auto;
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.6);
+            animation: pulseGlow 2s infinite;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 28px;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        p {
+            color: #a7f3d0;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        /* ✨ ആനിമേഷനുകൾ */
+        @keyframes popUp {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="success-container">
+        <!-- പച്ച വട്ടത്തിലുള്ള ടിക്ക് മാർക്ക് -->
+        <div class="circle-checkmark">✓</div>
+        <h1>Order Confirmed!</h1>
+        <p>ഓർഡർ വിജയകരമായി സബ്മിറ്റ് ചെയ്തു.</p>
+    </div>
+
+    <!-- 🎵 പേജ് ലോഡ് ആകുമ്പോൾ തന്നെ ശബ്ദം കേൾക്കാൻ -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const audio = new Audio('success.mp3');
+            audio.play().catch(err => console.log("Sound play error:", err));
+
+            // 3.5 സെക്കൻഡിന് ശേഷം തനിയെ തിരിച്ച് കാറ്റഗറി പേജിലേക്ക് പോകും
+            setTimeout(() => {
+                window.location.href = 'category.html';
+            }, 3500);
+        });
+    </script>
+</body>
+</html>

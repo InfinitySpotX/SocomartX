@@ -1,0 +1,30 @@
+/* ==========================================================================
+   PREMIUM SMOOTH ANIMATIONS
+   ========================================================================== */
+
+/* ഫേഡ്-ഇൻ ആനിമേഷൻ (പേജ് ലോഡ് ചെയ്യുമ്പോൾ സ്മൂത്ത് ആയി വരാൻ) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-content {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* സ്ലൈഡർ മാറുന്ന സമയത്തെ സ്മൂത്ത് ട്രാൻസിഷൻ */
+.slide {
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* ബട്ടണുകളിൽ പ്രൊഫഷണൽ ഹോവർ ഇഫക്റ്റ് */
+.newsletter-submit-btn, .category-card {
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}

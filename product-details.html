@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | SOCOMART</title>
+    <!-- ഗൂഗിൾ ഫോണ്ട് ലിങ്ക് -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- DETAILS PAGE SPECIAL STYLES --- */
+        body {
+            background-color: #111827;
+            color: #f9fafb;
+            font-family: 'Poppins', sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        
+        .back-btn:hover {
+            color: #dc2626;
+        }
+
+        .details-container {
+            max-width: 850px;
+            margin: 20px auto;
+            background: #1f2937;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (min-width: 768px) {
+            .details-container {
+                flex-direction: row;
+            }
+        }
+
+        .details-image {
+            flex: 1;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .details-image img {
+            max-width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid #374151;
+        }
+
+        .details-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .details-info h1 {
+            font-size: 28px;
+            margin: 0 0 10px 0;
+            color: #f9fafb;
+            line-height: 1.3;
+        }
+
+        .details-info .price {
+            font-size: 26px;
+            font-weight: 700;
+            color: #dc2626;
+            margin-bottom: 15px;
+        }
+
+        .details-info .description {
+            color: #9ca3af;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ബാക്ക് ടു കാറ്റഗറി ലിങ്ക് -->
+    <div style="max-width: 850px; margin: 0 auto;">
+        <a href="category.html" class="back-btn">← Back to Categories</a>
+    </div>
+
+    <!-- 🛍️ PRODUCT DETAILS DISPLAY BOX -->
+    <div class="details-container" id="product-details-view">
+        <!-- പ്രൊഡക്റ്റ് വിവരങ്ങൾ ജാവാസ്ക്രിപ്റ്റ് വഴി ഇവിടെ തനിയെ വരും -->
+    </div>
+
+    <!-- 📦 ORDER FORM POP-UP (MODAL) -->
+    <div id="order-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal-btn">&times;</span>
+            <h2>🛍️ Order Details</h2>
+            <p>ഓർഡർ കൺഫേം ചെയ്യാൻ നിങ്ങളുടെ വിവരങ്ങൾ നൽകുക</p>
+            
+            <form id="details-form">
+                <!-- ⚡ ക്ലിക്ക് ചെയ്ത പ്രൊഡക്റ്റിന്റെ പേര് ഇവിടെ ഓട്ടോമാറ്റിക്കായി വരും (Readonly ആണ്) -->
+                <div class="form-group">
+                    <label for="selected-product-name">Selected Product:</label>
+                    <input type="text" id="selected-product-name" readonly style="background-color: #2b3544; color: #ff4d4d; font-weight: bold; border-color: #dc2626;">
+                </div>
+                
+                <!-- ⚡ ലോക്കൽ സ്റ്റോറേജിലെ പ്രൊഫൈൽ വിവരങ്ങൾ ഇവിടെ തനിയെ ഫിൽ ആകും -->
+                <div class="form-group">
+                    <label for="cust-name">Name (പേര്):</label>
+                    <input type="text" id="cust-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="cust-phone">Phone Number (ഫോൺ നമ്പർ):</label>
+                    <input type="tel" id="cust-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="cust-address">Delivery Address (മേൽവിലാസം):</label>
+                    <textarea id="cust-address" rows="3" required></textarea>
+                </div>
+                <button type="submit" id="copy-btn" class="submit-order-btn">Submit Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ജാവാസ്ക്രിപ്റ്റ് കണക്ഷൻ -->
+    <script src="app.js"></script>
+</body>
+</html>

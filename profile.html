@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Profile | SOCOMART</title>
+    <!-- ഗൂഗിൾ ഫോണ്ട് (Poppins) ലിങ്ക് -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- നിങ്ങളുടെ CSS ഫയൽ ലിങ്ക് (നമ്മൾ നേരത്തെ സെറ്റ് ചെയ്ത റെഡ് & ബ്ലാക്ക് സ്റ്റൈൽ ഇതിലുണ്ടാകണം) -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ഈ പേജിന് മാത്രം ബാധകമായ ബാക്ക്ഗ്രൗണ്ട് സ്റ്റൈൽ */
+        body {
+            background-color: #111827; /* ബ്ലാക്ക് ബാക്ക്ഗ്രൗണ്ട് */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- പ്രൊഫൈൽ ക്രിയേറ്റ് ചെയ്യാനുള്ള മെയിൻ ബോക്സ് -->
+    <div class="account-container">
+        <h2>👤 Create Your Profile</h2>
+        <p>ഒറ്റത്തവണ നിങ്ങളുടെ വിവരങ്ങൾ ഇവിടെ സേവ് ചെയ്താൽ വേഗത്തിൽ ഓർഡർ ചെയ്യാം!</p>
+        
+        <form id="account-form">
+            <div class="form-group">
+                <label for="reg-name">Full Name (മുഴുവൻ പേര്):</label>
+                <input type="text" id="reg-name" placeholder="Enter your full name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="reg-phone">Phone Number (ഫോൺ നമ്പർ):</label>
+                <input type="tel" id="reg-phone" placeholder="Enter 10 digit number" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="reg-address">Delivery Address (മേൽവിലാസം):</label>
+                <textarea id="reg-address" placeholder="Enter full address with landmark and pincode" rows="4" required></textarea>
+            </div>
+            
+            <button type="submit" class="save-btn">Save & Create Profile</button>
+        </form>
+    </div>
+
+    <!-- നിങ്ങളുടെ ജാവാസ്ക്രിപ്റ്റ് ഫയൽ ലിങ്ക് -->
+    <script src="app.js"></script>
+</body>
+</html>

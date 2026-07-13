@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Category | SOCOMART</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+
+    <!-- 🔍 FILTER & SEARCH CONTROLS -->
+    <div class="controls-container">
+        <!-- Live Search -->
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search products...">
+        </div>
+
+        <!-- Filter & Sort Options -->
+        <div class="filter-sort-row">
+            <select id="category-filter">
+                <option value="all">All Categories</option>
+                <option value="kitchen">Kitchen Tools</option>
+                <option value="gadgets">Smart Gadgets</option>
+                <option value="home">Home Decor</option>
+            </select>
+
+            <select id="price-sort">
+                <option value="default">Sort By Price</option>
+                <option value="low-high">Price: Low to High</option>
+                <option value="high-low">Price: High to Low</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- 🛍️ PRODUCTS DISPLAY GRID -->
+    <main class="products-grid" id="products-container">
+        <!-- പ്രൊഡക്റ്റുകൾ ജാവാസ്ക്രിപ്റ്റ് വഴി ഇവിടെ ലോഡ് ആകും -->
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

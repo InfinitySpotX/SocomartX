@@ -1,0 +1,60 @@
+/* ==========================================================================
+   RESPONSIVE DESIGN (മൊബൈൽ, ടാബ്‌ലെറ്റ് സ്ക്രീനുകൾക്ക് വേണ്ടി)
+   ========================================================================== */
+
+/* 1. ലാപ്ടോപ്പ് / ചെറിയ കമ്പ്യൂട്ടർ സ്ക്രീനുകൾ (1024px-ൽ താഴെ) */
+@media screen and (max-width: 1024px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    .hero-slider {
+        height: 320px; /* സ്ക്രീൻ ചെറുതാകുമ്പോൾ ബാനറിന്റെ പൊക്കം കുറയും */
+    }
+}
+
+/* 2. ടാബ്‌ലെറ്റ് സ്ക്രീനുകൾ (768px-ൽ താഴെ) */
+@media screen and (max-width: 768px) {
+    .navbar {
+        position: relative;
+    }
+    /* സെർച്ച് ബാർ നടുവിലേക്ക് മാറ്റുന്നു */
+    .nav-search-container {
+        max-width: 100%;
+        order: 3; /* മൊബൈലിൽ സെർച്ച് ബാർ താഴേക്ക് വരാൻ */
+        width: 100%;
+    }
+    .navbar {
+        flex-wrap: wrap; /* മൊബൈലിൽ ഐറ്റങ്ങൾ താഴോട്ട് ഇറങ്ങി വരാൻ */
+    }
+    .hero-slider {
+        height: 250px;
+    }
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr); /* ടാബിൽ രണ്ട് കാറ്റഗറി വീതം കാണിക്കും */
+        gap: 15px;
+    }
+}
+
+/* 3. മൊബൈൽ ഫോണുകൾ (480px-ൽ താഴെ) */
+@media screen and (max-width: 480px) {
+    .logo-text {
+        font-size: 20px;
+    }
+    .hero-slider {
+        height: 180px;
+    }
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr); /* ഫോണിലും 2 കാറ്റഗറി വീതം ഭംഗിയായി കാണിക്കും */
+        gap: 10px;
+    }
+    .section-title h2 {
+        font-size: 22px;
+    }
+    .main-content {
+        padding: 0 15px;
+        margin: 20px auto;
+    }
+    .footer-newsletter h3 {
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,768 @@
+/* ==========================================================================
+   1. PREMIUM DARK THEME VARIABLES (എഡിറ്റ് ചെയ്യാൻ ഏറ്റവും എളുപ്പമുള്ള വഴി)
+   ========================================================================== */
+:root {
+    /* 🌙 Default Mode: Full Dark Red & Black Theme */
+    --bg-main: #0a0a0a;            /* കടും കറുപ്പ് (Deep Black Background) */
+    --bg-secondary: #141414;       /* രണ്ടാമത്തെ കറുപ്പ് (Dark Charcoal) */
+    --bg-card: #1a1a1a;            /* കാർഡുകൾക്കുള്ള ഡാർക്ക് ഗ്രേ */
+    --text-main: #ffffff;          /* പ്രധാന അക്ഷരങ്ങൾ (Pure White) */
+    --text-muted: #b3b3b3;         /* ചെറിയ അക്ഷരങ്ങൾ (Light Grey) */
+    --border-color: #2a2a2a;       /* ഇരുണ്ട ബോർഡർ കളർ */
+    --accent-color: #e50914;       /* പ്രീമിയം റെഡ് ഹൈലൈറ്റ് (Netflix Red പോലെ) */
+    --accent-hover: #ff1744;       /* ബട്ടണിൽ ഹോവർ ചെയ്യുമ്പോൾ കത്തുന്ന ചുവപ്പ് */
+
+    --font-primary: 'Inter', sans-serif;
+    --transition-fast: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --shadow-premium: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ☀️ Light White Mode (ഭാവിയിൽ ടോഗിൾ ചെയ്യുമ്പോൾ വരാൻ വേണ്ടി മാത്രം) */
+[data-theme="light"] {
+    --bg-main: #ffffff;            
+    --bg-secondary: #f9f9f9;       
+    --bg-card: #ffffff;            
+    --text-main: #111111;          
+    --text-muted: #666666;         
+    --border-color: #eeeeee;       
+    --accent-color: #d32f2f;       
+    --accent-hover: #b71c1c;       
+}
+
+/* ==========================================================================
+   2. RESET & BASE STYLES
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    transition: var(--transition-fast);
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+/* ==========================================================================
+   3. AUTO SLIDING HERO BANNER (Boxed Frame Layout)
+   ========================================================================== */
+.hero-slider {
+    max-width: 1440px;       /* 👈 ഫ്രെയിം ഒരു പരിധിയിൽ കൂടുതൽ വിസ്താരമാകാതിരിക്കാൻ */
+    width: calc(100% - 30px);/* 👈 ഇരുവശങ്ങളിലും കൃത്യമായ ഗ്യാപ്പ് കിട്ടാൻ (Mobile-friendly) */
+    height: 220px;          /* 👈 മൊബൈലിൽ ബോക്സ് ഷേപ്പിന് അനുയോജ്യമായ പൊക്കം */
+    margin: 15px auto;      /* 👈 ബോക്സിനെ നടുവിലേക്ക് കൊണ്ടുവരാനും മുകളിലും താഴെയും ഗ്യാപ്പ് നൽകാനും */
+    
+    overflow: hidden;
+    position: relative;
+    background-color: var(--bg-secondary); 
+    
+    /* 💎 ബോക്സ് പ്രീമിയം ആക്കാനുള്ള മെയിൻ ഫീച്ചറുകൾ */
+    border: 1px solid var(--border-color); /* ഡാർക്ക് ബോർഡർ */
+    border-radius: 12px;                  /* 👈 കോണുകൾ ബോക്സ് പോലെ ഭംഗിയായി വളക്കാൻ */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* ലൈറ്റ് ഷാഡോ */
+}
+
+.slider-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1); 
+    z-index: 1;
+}
+
+.slide.active {
+    opacity: 1;
+    position: relative;
+    z-index: 2;
+}
+
+/* 🖼️ ബോക്സിനുള്ളിലെ ഇമേജ് സെറ്റിംഗ്സ് */
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 👈 ഫോട്ടോകൾ ബോക്സിന്റെ ഷേപ്പിന് അനുസരിച്ച് കൃത്യമായി ഇരിക്കാൻ */
+    border-radius: 12px; /* ഇമേജിന്റെ കോണുകളും ബോക്സിനൊപ്പം വളഞ്ഞു നിൽക്കും */
+}
+
+@media screen and (min-width: 768px) {
+    .hero-slider {
+        height: 350px; /* വലിയ സ്ക്രീനുകളിൽ ബോക്സിന്റെ പൊക്കം കൂടും */
+        margin: 25px auto;
+    }
+}
+
+/* ==========================================================================
+   4. FIXED MAIN HEADER & NAVBAR (പെർഫെക്റ്റ് ഡാർക്ക് മൊബൈൽ ലേഔട്ട്)
+   ========================================================================== */
+.main-header {
+    background-color: var(--bg-main);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: var(--transition-fast);
+}
+
+.navbar {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 12px 15px;
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Logo */
+.logo-text {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-main);
+}
+.logo-accent { 
+    color: var(--accent-color); /* SOCOMART-ലെ 'MART' ചുവപ്പ് കളറിൽ തിളങ്ങാൻ */
+}
+
+/* Utilities (Wishlist & Theme Sticker) */
+.nav-utilities {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-icon-btn { 
+    position: relative; 
+    font-size: 20px; 
+    color: var(--text-main);
+}
+
+.badge {
+    position: absolute; top: -6px; right: -8px;
+    background-color: var(--accent-color); 
+    color: #ffffff;
+    font-size: 10px; padding: 2px 6px; border-radius: 50%;
+    font-weight: bold;
+}
+
+.theme-toggle-btn {
+    background: none; 
+    border: 1px solid var(--border-color);
+    padding: 6px; border-radius: 50%; cursor: pointer;
+    font-size: 14px; background-color: var(--bg-secondary);
+    color: var(--text-main);
+    transition: var(--transition-fast);
+}
+.theme-toggle-btn:hover {
+    border-color: var(--accent-color);
+}
+
+.menu-toggle-trigger {
+    background: none; border: none; font-size: 22px; cursor: pointer; color: var(--text-main);
+}
+
+/* ==========================================================================
+   📱 MODERN SEARCH BAR RE-WORK (Matches Email Box Perfectly)
+   ========================================================================== */
+.nav-search-container {
+    width: 100%;
+    order: 4; 
+    position: relative;
+    margin-top: 12px;
+}
+
+/* ഇമെയിൽ ബോക്സിന്റെ അതേ ലുക്കിലുള്ള മെയിൻ ഫ്രെയിം */
+.search-form {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 25px; /* ഇമെയിൽ ബോക്സ് പോലെയുള്ള പൂർണ്ണമായ റൗണ്ട് ഷേപ്പ് */
+    overflow: hidden;
+    background-color: #0c0c0c !important; /* ഇമെയിൽ ബോക്സിന്റെ അതേ ഡാർക്ക് ബ്ലാക്ക് */
+    transition: var(--transition-fast);
+}
+
+/* സെർച്ച് ബാറിൽ ക്ലിക്ക് ചെയ്യുമ്പോൾ ചുവപ്പ് ബോർഡർ വരാൻ */
+.search-form:focus-within {
+    border-color: var(--accent-color) !important;
+}
+
+/* ടൈപ്പ് ചെയ്യുന്ന ഭാഗം */
+.search-input, #main-search-input {
+    width: 100%;
+    padding: 12px 20px !important; /* ഇമെയിൽ ബോക്സിന്റെ അതേ സ്പേസിംഗ് */
+    border: none !important; 
+    outline: none !important; 
+    background: transparent !important; /* അനാവശ്യ വൈറ്റ് ബാക്ക്ഗ്രൗണ്ടുകൾ പൂർണ്ണമായി ഒഴിവാക്കി */
+    color: #ffffff !important; /* ടൈപ്പ് ചെയ്യുന്ന അക്ഷരങ്ങൾ വെളുത്ത നിറത്തിൽ */
+    font-size: 14px;
+}
+
+/* പ്ലേസ്ഹോൾഡർ ടെക്സ്റ്റ് കളർ */
+#main-search-input::placeholder {
+    color: #555555;
+}
+
+/* ചെറുതും കൃത്യവുമായ സെർച്ച് ബട്ടൺ */
+.search-btn { 
+    background: transparent !important;
+    border: none !important;
+    padding: 0 16px !important; /* ബട്ടണിന്റെ വീതി കുറച്ച് കൃത്യമാക്കി */
+    cursor: pointer;
+    color: var(--accent-color) !important; /* പ്രീമിയം റെഡ് കളർ ഐക്കൺ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
+}
+
+.search-btn:hover {
+    color: var(--accent-hover) !important;
+}
+
+/* ലൈവ് സെർച്ച് റിസൾട്ട് ബോക്സ് ഡിസൈൻ */
+.search-results-overlay {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #141414;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-top: 5px;
+    padding: 15px;
+    z-index: 999;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+#search-results-list {
+    margin-top: 10px;
+    list-style: none;
+}
+
+/* Menu Dropdown List */
+.nav-links-menu {
+    position: absolute; top: 100%; right: 15px;
+    background-color: var(--bg-card); border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-premium); border-radius: 6px;
+    padding: 15px; display: none; flex-direction: column; gap: 12px; min-width: 180px;
+}
+.nav-links-menu.show { display: flex; }
+
+/* ==========================================================================
+   5. PRODUCT CATEGORIES SECTION (Premium Dark Grid)
+   ========================================================================== */
+.main-content { max-width: 1440px; margin: 30px auto; padding: 0 15px; }
+.section-title { margin-bottom: 25px; border-left: 4px solid var(--accent-color); padding-left: 10px; }
+.section-title h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.5px; }
+.section-title p { color: var(--text-muted); font-size: 13px; }
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 15px;
+}
+
+.category-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px; overflow: hidden; text-align: center; padding-bottom: 15px;
+    transition: var(--transition-fast);
+}
+
+.category-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-color); /* ഹോവർ ചെയ്യുമ്പോൾ ചുവപ്പ് ബോർഡർ */
+    box-shadow: 0 5px 15px rgba(229, 9, 20, 0.1);
+}
+
+.category-image {
+    width: 100%;
+    height: 150px;
+    background-color: #222222; /* ഫോട്ടോ ഇല്ലെങ്കിലും കറുപ്പ് കലർന്ന ബോക്സ് വരാൻ */
+}
+
+.category-image img { width: 100%; height: 100%; object-fit: cover; }
+.category-card h3 { margin-top: 12px; font-size: 15px; font-weight: 600; color: var(--text-main); }
+
+/* ==========================================================================
+   6. FOOTER & NEWSLETTER (Full Dark Luxury)
+   ========================================================================== */
+.main-footer { 
+    background-color: var(--bg-secondary); 
+    padding: 40px 15px 25px; 
+    text-align: center; 
+    margin-top: 50px;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-newsletter { max-width: 450px; margin: 0 auto 30px; }
+.footer-newsletter h3 { font-size: 20px; margin-bottom: 8px; }
+.footer-newsletter p { color: var(--text-muted); font-size: 13px; margin-bottom: 15px; }
+
+.newsletter-form { 
+    display: flex; 
+    border: 1px solid var(--border-color); 
+    border-radius: 25px; 
+    background-color: var(--bg-main); 
+    overflow: hidden;
+}
+
+.newsletter-form input { 
+    width: 100%; padding: 12px 20px; border: none; outline: none; 
+    background: transparent; color: var(--text-main);
+    font-size: 14px;
+}
+
+.newsletter-submit-btn { 
+    background-color: var(--accent-color); 
+    color: #ffffff; 
+    border: none; padding: 0 25px; font-weight: 600; 
+    cursor: pointer; transition: var(--transition-fast);
+    font-size: 14px;
+}
+
+.newsletter-submit-btn:hover { 
+    background-color: var(--accent-hover); 
+}
+
+.footer-bottom { 
+    font-size: 12px; color: var(--text-muted); 
+    border-top: 1px solid var(--border-color); 
+    padding-top: 20px; 
+}
+
+/* --- PROFILE PAGE SPECIAL STYLES --- */
+:root {
+    --primary-red: #dc2626;      /* ബ്രൈറ്റ് റെഡ് */
+    --dark-red: #b91c1c;         /* ഹോവർ റെഡ് */
+    --bg-black: #111827;         /* മെയിൻ ബാക്ക്ഗ്രൗണ്ട് */
+    --card-black: #1f2937;       /* ഫോം ബോക്സ് ബാക്ക്ഗ്രൗണ്ട് */
+    --text-white: #f9fafb;       /* വെളുത്ത അക്ഷരങ്ങൾ */
+    --text-gray: #9ca3af;        /* ഗ്രേ അക്ഷരങ്ങൾ */
+}
+
+/* പ്രൊഫൈൽ ബോക്സിന്റെ സ്റ്റൈൽ */
+.account-container {
+    background-color: var(--card-black);
+    padding: 35px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.account-container h2 {
+    color: var(--text-white);
+    font-size: 26px;
+    margin-bottom: 8px;
+    margin-top: 0;
+}
+
+.account-container p {
+    color: var(--text-gray);
+    font-size: 13.5px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+/* ഇൻപുട്ട് ഫീൽഡുകൾ */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text-white);
+    letter-spacing: 0.5px;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    background-color: #111827;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    font-size: 15px;
+    color: var(--text-white);
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+/* ഇൻപുട്ട് ഫോക്കസ് ചെയ്യുമ്പോൾ (Glow Effect) */
+.form-group input:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-red);
+    box-shadow: 0 0 8px rgba(220, 38, 38, 0.4);
+}
+
+/* സേവ് ബട്ടൺ സ്റ്റൈൽ */
+.save-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--primary-red);
+    color: var(--text-white);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    margin-top: 10px;
+}
+
+.save-btn:hover {
+    background-color: var(--dark-red);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(220, 38, 38, 0.4);
+}
+
+.save-btn:active {
+    transform: translateY(1px);
+}
+
+/* കാറ്റഗറി പേജിന്റെ മെയിൻ ലേഔട്ട് */
+body.dark-theme {
+    background-color: #111827;
+    color: #f9fafb;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+}
+
+/* സെർച്ച്, ഫിൽട്ടർ ബോക്സുകൾ */
+.controls-container {
+    max-width: 1200px;
+    margin: 0 auto 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 14px;
+    background-color: #1f2937;
+    border: 1px solid #374151;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: #dc2626;
+    box-shadow: 0 0 8px rgba(220, 38, 38, 0.4);
+}
+
+.filter-sort-row {
+    display: flex;
+    gap: 15px;
+}
+
+.filter-sort-row select {
+    flex: 1;
+    padding: 12px;
+    background-color: #1f2937;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* പ്രൊഡക്റ്റ് ഗ്രിഡ് */
+.products-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+/* പ്രൊഡക്റ്റ് കാർഡ് */
+.product-card {
+    background-color: #1f2937;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid rgba(220, 38, 38, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.15);
+    border-color: rgba(220, 38, 38, 0.3);
+}
+
+.product-card img {
+    max-width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #f9fafb;
+}
+
+.product-card .price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #dc2626;
+    margin-bottom: 15px;
+}
+
+.buy-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #dc2626;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.buy-btn:hover {
+    background-color: #b91c1c;
+}
+
+/* --- കസ്റ്റം വേരിയബിളുകൾ (RED & BLACK THEME) --- */
+:root {
+    --primary-red: #dc2626;      /* ബ്രൈറ്റ് റെഡ് */
+    --dark-red: #b91c1c;         /* ഹോവർ റെഡ് */
+    --bg-black: #111827;         /* മെയിൻ ബാക്ക്ഗ്രൗണ്ട് */
+    --card-black: #1f2937;       /* പ്രൊഡക്റ്റ് കാർഡ് ബാക്ക്ഗ്രൗണ്ട് */
+    --text-white: #f9fafb;       /* വെളുത്ത അക്ഷരങ്ങൾ */
+    --text-gray: #9ca3af;        /* ഗ്രേ അക്ഷരങ്ങൾ */
+}
+
+/* പൊതുവായ ബോഡി സ്റ്റൈൽ */
+body.dark-theme {
+    background-color: var(--bg-black);
+    color: var(--text-white);
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* --- SEARCH & FILTER CONTROLS --- */
+.controls-container {
+    max-width: 1200px;
+    margin: 40px auto 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 10px;
+}
+
+/* സെർച്ച് ബാർ */
+.search-box input {
+    width: 100%;
+    padding: 14px 20px;
+    background-color: var(--card-black);
+    border: 1px solid #374151;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--primary-red);
+    box-shadow: 0 0 10px rgba(220, 38, 38, 0.4);
+}
+
+/* ഫിൽട്ടർ & സോർട്ട് റോ */
+.filter-sort-row {
+    display: flex;
+    gap: 15px;
+}
+
+.filter-sort-row select {
+    flex: 1;
+    padding: 14px;
+    background-color: var(--card-black);
+    border: 1px solid #374151;
+    border-radius: 10px;
+    color: var(--text-white);
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.filter-sort-row select:focus {
+    border-color: var(--primary-red);
+}
+
+/* --- PRODUCTS GRID LAYOUT --- */
+.products-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+/* --- PRODUCT CARD STYLE --- */
+.product-card {
+    background-color: var(--card-black);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid rgba(220, 38, 38, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* കാർഡിന് മുകളിലൂടെ മൗസ് കൊണ്ടുപോകുമ്പോൾ (Hover Effect) */
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(220, 38, 38, 0.2);
+    border-color: rgba(220, 38, 38, 0.4);
+}
+
+/* പ്രൊഡക്റ്റ് ഇമേജ് */
+.product-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #374151;
+    cursor: pointer;
+}
+
+/* പ്രൊഡക്റ്റ് ടൈറ്റിൽ */
+.product-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 10px 0;
+    color: var(--text-white);
+    line-height: 1.4;
+}
+
+/* പ്രൊഡക്റ്റ് പ്രൈസ് */
+.product-card .price {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary-red);
+    margin-bottom: 15px;
+}
+
+/* പ്രീമിയം ബൈ ബട്ടൺ */
+.buy-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-red);
+    color: var(--text-white);
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(220, 38, 38, 0.2);
+}
+
+.buy-btn:hover {
+    background-color: var(--dark-red);
+    box-shadow: 0 6px 15px rgba(220, 38, 38, 0.3);
+}
+
+.buy-btn:active {
+    transform: scale(0.98);
+}
+
+/* --- STICKER LOGO STYLE --- */
+.main-header {
+    background-color: var(--card-black);
+    padding: 12px 20px;
+    border-bottom: 2px solid rgba(220, 38, 38, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* സ്റ്റിക്കർ ലോഗോയുടെ ഡിസൈൻ */
+.sticker-logo {
+    width: 45px;
+    height: 45px;
+    background-color: var(--primary-red); /* ചുവന്ന വട്ടം */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* വട്ടത്തിലാക്കാൻ */
+    font-size: 24px; /* സ്റ്റിക്കറിന്റെ വലിപ്പം */
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(220, 38, 38, 0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* സ്റ്റിക്കറിൽ മൗസ് വെക്കുമ്പോൾ ഉള്ള കിടിലൻ ഇഫക്ട് (Hover) */
+.sticker-logo:hover {
+    transform: scale(1.15) rotate(15deg); /* ചെറുതായി വലുതായി ചരിയും */
+    box-shadow: 0 0 18px rgba(220, 38, 38, 0.8);
+    background-color: #ef4444; /* ലൈറ്റ് റെഡ് ആകും */
+}
+
+/* ബ്രാൻഡ് ടൈറ്റിൽ */
+.brand-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text-white);
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ml-IN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOCOMART | All-in-One Premium Online Mall</title>
+    <meta name="description" content="Welcome to SOCOMART - Your ultimate all-in-one online shopping destination.">
+    
+    <!-- CSS ഫയലുകൾ കണക്ട് ചെയ്യുന്നു -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+
+    <!-- ==========================================================================
+       1. TOP AUTO SLIDING HERO BANNER (5 Second Interval)
+       ========================================================================== -->
+    <section class="hero-slider" aria-label="Latest Offers">
+        <div class="slider-wrapper" id="hero-slider-wrapper">
+            <!-- Frame 1 -->
+            <div class="slide active">
+                <img src="images/banner1.jpg" alt="Mega Electronics Sale - Up to 50% Off">
+            </div>
+            <!-- Frame 2 -->
+            <div class="slide">
+                <img src="images/banner2.jpg" alt="Trendy Fashion Collection - New Arrivals">
+            </div>
+            <!-- Frame 3 -->
+            <div class="slide">
+                <img src="images/banner3.jpg" alt="Home Essentials & Kitchen Products">
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       2. PREMIUM MAIN HEADER & NAVIGATION
+       ========================================================================== -->
+    <header class="main-header">
+        <nav class="navbar">
+            
+            <!-- (A) ടെക്സ്റ്റ് ലോഗോ -->
+            <div class="nav-logo">
+                <a href="index.html" class="logo-text">SOCO<span class="logo-accent">MART</span></a>
+            </div>
+
+            <!-- (B) സ്മാർട്ട് ഇൻസ്റ്റന്റ് സെർച്ച് സിസ്റ്റം -->
+<!-- ==========================================================================
+     📱 SOCOMART PREMIUM MODERN SEARCH BAR
+     ========================================================================== -->
+<div class="nav-search-container">
+    <form autocomplete="off" class="search-form" onsubmit="return false;">
+        <!-- ടൈപ്പ് ചെയ്യാനുള്ള ഇൻപുട്ട് ഫീൽഡ് -->
+        <input type="search" id="main-search-input" placeholder="സാധനങ്ങൾ ഇവിടെ തിരയുക..." aria-label="Search products">
+        
+        <!-- ചെറുതും മനോഹരവുമായ സെർച്ച് ബട്ടൺ -->
+        <button type="submit" class="search-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+        </button>
+    </form>
+    
+    <!-- ലൈവ് റിസൾട്ട് കാണിക്കുന്ന ബോക്സ് -->
+    <div id="search-results-box" class="search-results-overlay" hidden>
+        <p id="search-status-message"></p>
+        <ul id="search-results-list"></ul>
+    </div>
+</div>
+
+
+            <!-- (C) വിഷ്‌ലിസ്റ്റ് & തീം സ്റ്റിക്കർ ബട്ടൺ -->
+            <div class="nav-utilities">
+                <!-- വിഷ്‌ലിസ്റ്റ് ബട്ടൺ -->
+                <a href="wishlist.html" class="nav-icon-btn" aria-label="Wishlist">
+                    <span class="icon">❤️</span>
+                    <span class="badge" id="wishlist-count">0</span>
+                </a>
+                <!-- ലൈറ്റ്/ഡാർക്ക് തീം മാറാനുള്ള സ്റ്റിക്കർ ടോഗിൾ -->
+                <button class="theme-toggle-btn" id="theme-sticker-btn" aria-label="Toggle Theme">
+                    <span class="theme-icon">☀️</span>
+                </button>
+            </div>
+
+<!-- 🏆 NAVIGATION BAR WITH STICKER LOGO -->
+<header class="main-header">
+    <div class="header-container">
+        <!-- ഈ സ്റ്റിക്കറിൽ ഞെക്കിയാൽ പ്രൊഫൈലിലേക്ക് പോകും -->
+        <a href="profile.html" class="sticker-logo">👤</a>
+        <h1 class="brand-title">Profile</h1>
+    </div>
+</header>
+
+
+            <!-- (D) ടോഗിൾ മെനു (Home, About, Contacts) -->
+            <div class="nav-menu-wrapper">
+                <button class="menu-toggle-trigger" id="menu-toggle-btn" aria-label="Open Menu">
+                    <span class="hamburger-icon">☰</span>
+                </button>
+                <ul class="nav-links-menu" id="nav-dropdown-menu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="category.html">Categories</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+
+    <!-- ==========================================================================
+       3. ALL-IN-ONE PRODUCT CATEGORIES WITH PHOTOS
+       ========================================================================== -->
+    <main class="main-content">
+        <section class="categories-section">
+            <div class="section-title">
+                <h2>Shop By Category</h2>
+                <p>ഞങ്ങളുടെ എല്ലാത്തരം ഉൽപ്പന്നങ്ങളും ഇവിടെ പര്യവേക്ഷണം ചെയ്യൂ</p>
+            </div>
+            
+            <div class="categories-grid">
+                <!-- കാറ്റഗറി 1: ഗാഡ്‌ജെറ്റുകൾ -->
+                <a href="categories.html?category=electronics" class="category-card">
+                    <div class="category-image">
+                        <img src="images/cat-electronics.jpg" alt="Electronics & Gadgets">
+                    </div>
+                    <h3>Electronics</h3>
+                </a>
+
+                <!-- കാറ്റഗറി 2: ഫാഷൻ -->
+                <a href="categories.html?category=fashion" class="category-card">
+                    <div class="category-image">
+                        <img src="images/cat-fashion.jpg" alt="Clothing & Fashion">
+                    </div>
+                    <h3>Fashion</h3>
+                </a>
+
+                <!-- കാറ്റഗറി 3: കിച്ചൺ & ഹോം -->
+                <a href="categories.html?category=kitchen" class="category-card">
+                    <div class="category-image">
+                        <img src="images/cat-kitchen.jpg" alt="Kitchen Essentials">
+                    </div>
+                    <h3>Kitchen & Home</h3>
+                </a>
+
+                <!-- കാറ്റഗറി 4: സൂപ്പർമാർക്കറ്റ് / പലചരക്ക് -->
+                <a href="categories.html?category=grocery" class="category-card">
+                    <div class="category-image">
+                        <img src="images/cat-grocery.jpg" alt="Daily Groceries">
+                    </div>
+                    <h3>Groceries</h3>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================================================
+       4. FOOTER WITH NEWSLETTER EMAIL SPACE
+       ========================================================================== -->
+    <footer class="main-footer">
+        <div class="footer-newsletter">
+            <h3>Join the SOCOMART Club</h3>
+            <p>പുതിയ ഓഫറുകളും പ്രൊഡക്റ്റുകളും നിങ്ങളുടെ ഇമെയിലിൽ നേരിട്ട് അറിയാം</p>
+            <form class="newsletter-form" onsubmit="return false;">
+                <input type="email" placeholder="നിങ്ങളുടെ ഇമെയിൽ വിലാസം നൽകുക" required aria-label="Email for newsletter">
+                <button type="submit" class="newsletter-submit-btn">Subscribe</button>
+            </form>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 SOCOMART. All Rights Reserved. Built from Scratch.</p>
+        </div>
+    </footer>
+
+    <!-- ജാവാസ്ക്രിപ്റ്റ് ഫയലുകൾ ലിങ്ക് ചെയ്യുന്നു -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>
