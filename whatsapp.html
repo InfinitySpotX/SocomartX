@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOCOMART - Payment Option</title>
+    <style>
+        /* 🖤 ബ്ലാക്ക് ആൻഡ് ഗ്രീൻ വൈബ് സ്റ്റൈലിംഗ് */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b141a; /* ഡാർക്ക് ബ്ലാക്ക്/ഗ്രീൻ ബാക്ക്ഗ്രൗണ്ട് */
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #111b21; /* വാട്സാപ്പ് ഡാർക്ക് തീം ബ്ലാക്ക് */
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 255, 100, 0.1);
+            max-width: 400px;
+            width: 100%;
+            border: 1px solid #202c33;
+        }
+
+        /* 🟢 വാട്സാപ്പ് ഗ്രീൻ ടിക്ക് ആനിമേഷൻ */
+        .icon-box {
+            width: 80px;
+            height: 80px;
+            background: #25d366; /* WhatsApp Green */
+            color: #111b21;
+            font-size: 45px;
+            font-weight: bold;
+            line-height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+            animation: popIn 0.5s ease-in-out;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #25d366;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #aebac1;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        /* ⏳ പ്രോഗ്രസ്സ് ബാർ (3 സെക്കൻഡ് കൗണ്ട്ഡൗൺ വിഷ്വൽ) */
+        .progress-bar-container {
+            width: 100%;
+            height: 5px;
+            background-color: #202c33;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 100%;
+            background-color: #25d366;
+            animation: countdown 3s linear forwards;
+        }
+
+        /* 🎬 ആനിമേഷനുകൾ */
+        @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes countdown {
+            from { width: 100%; }
+            to { width: 0%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 🟢 ഗ്രീൻ ടിക്ക് ഐക്കൺ -->
+        <div class="icon-box">✓</div>
+        
+        <h2>ഓർഡർ സ്വീകരിച്ചു!</h2>
+        <p>നിങ്ങളുടെ ഓർഡർ ഡീറ്റെയിൽസ് ഞങ്ങൾ വാട്സാപ്പിലേക്ക് അയച്ചിട്ടുണ്ട്. പേയ്മെന്റ് വിവരങ്ങൾ അവിടെ ലഭ്യമാണ്.</p>
+        
+        <!-- ⏳ 3 സെക്കൻഡ് ബാർ -->
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+
+    <!-- 🚀 3 സെക്കൻഡ് കഴിഞ്ഞ് ഇൻഡെക്സ് പേജിലേക്ക് റീഡയറക്ട് ചെയ്യാനുള്ള സ്ക്രിപ്റ്റ് -->
+    <script>
+        setTimeout(function() {
+            window.location.href = 'index.html'; // ഹോം പേജിന്റെ പേര് index.html അല്ലെങ്കിൽ മാറ്റുക
+        }, 3000); // 3000 മില്ലിസെക്കൻഡ് = 3 സെക്കൻഡ്
+    </script>
+
+</body>
+</html>
